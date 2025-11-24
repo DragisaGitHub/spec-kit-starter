@@ -59,8 +59,8 @@ foreach ($template in $templates) {
         $content = Get-Content $sourcePath -Raw
 
         # Replace placeholders
-        $content = $content -replace '\[SPEC_NUMBER\]', [Regex]::Escape($SpecNumber) -replace '\\', ''
-        $content = $content -replace '\[SPEC_NAME\]',   [Regex]::Escape($SpecName)  -replace '\\', ''
+        $content = $content -replace [Regex]::Escape('[SPEC_NUMBER]'), $SpecNumber
+        $content = $content -replace [Regex]::Escape('[SPEC_NAME]'), $SpecName
         $content = $content -replace '\[DATE\]',        (Get-Date -Format "yyyy-MM-dd")
 
         Set-Content -Path $destPath -Value $content -NoNewline
