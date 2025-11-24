@@ -2,10 +2,10 @@
 # Creates a new specification folder from templates
 
 param(
-    [Parameter(Mandatory = $true)]
+    [Parameter(Mandatory=$true)]
     [string]$SpecNumber,
 
-    [Parameter(Mandatory = $true)]
+    [Parameter(Mandatory=$true)]
     [string]$SpecName,
 
     [string]$SpecsRoot = "specs"
