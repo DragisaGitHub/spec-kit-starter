@@ -63,7 +63,7 @@ foreach ($template in $templates) {
         $content = $content -replace [Regex]::Escape('[SPEC_NAME]'), $SpecName
         $content = $content -replace '\[DATE\]',        (Get-Date -Format "yyyy-MM-dd")
 
-        Set-Content -Path $destPath -Value $content -NoNewline
+        Set-Content -Path $destPath -Value $content
         Write-Host "  Created: $template" -ForegroundColor Cyan
     }
     else {
