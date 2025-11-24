@@ -19,10 +19,8 @@ if ($SpecNumber -notmatch '^\d{3}$') {
     exit 1
 }
 
-# Normalize SpecName -> kebab-case-ish (spaces -> '-', trim)
-$SpecName = $SpecName.Trim()
-$SpecName = $SpecName -replace '\s+', '-'
-
+# Normalize SpecName -> kebab-case (lowercase, spaces/special chars -> '-', trim, collapse hyphens)
+$SpecName = $SpecName.Trim().ToLower() -replace '[^a-z0-9]+' , '-' -replace '^-|-$', ''
 # Resolve paths based on script location so it works from anywhere
 $scriptRoot    = Split-Path -Parent $MyInvocation.MyCommand.Path
 $repoRoot      = Split-Path -Parent $scriptRoot           # .specify/scripts -> .specify
